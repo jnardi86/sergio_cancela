@@ -24,24 +24,22 @@ const NavbarMobile = () => {
 
     return (
         <nav className="relative flex items-center justify-between px-4 py-2 bg-white shadow-md border-b border-neutral">
-            <Layout>
-                {/* Logo */}
-                <div className="col-span-1 flex items-center">
-                    <img src="images/logo_mobile.png" alt="Logo" className="w-9 h-10" />
-                </div>
 
+            {/* Logo */}
+            <div className="flex items-center">
+                <img src="images/logo_mobile.png" alt="Logo" className="w-9 h-10" />
+            </div>
+
+            <div className="flex items-center gap-4">
                 {/* Botón de contacto */}
-                <div className="col-span-2 flex items-center justify-center">
                     <a
                         href="#contacto"
                         className="w-[123px] h-10 px-4 py-2 bg-secondary text-lightBg text-bodyLink text-center font-semibold rounded-lg shadow-md"
                     >
                         CONTACTO
                     </a>
-                </div>
-
                 {/* Menú hamburguesa */}
-                <div className="col-span-1 flex justify-end">
+                
                     <button
                         onClick={toggleMenu}
                         className="w-9 h-9 flex items-center justify-center border border-neutral rounded-lg"
@@ -52,8 +50,9 @@ const NavbarMobile = () => {
                             <MenuIcon width="24" height="24" fill="#344051" />
                         )}
                     </button>
-                </div>
-            </Layout>
+            </div>
+
+
 
 
             {/* Menú desplegable */}
