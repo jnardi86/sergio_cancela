@@ -4,7 +4,9 @@ import CheckIcon from './icons/CheckIcon';
 
 const AboutUs = () => {
     return (
-        <section className="bg-lightBg flex flex-col lg:py-16 lg:px-16 lg:flex-row lg:items-center lg:space-x-8">
+        <section
+            id="aboutUs"
+            className="bg-lightBg flex flex-col lg:py-16 lg:px-16 lg:flex-row lg:items-center lg:space-x-8">
             {/* Texto */}
             <div className="mx-4 py-8 lg:w-1/2">
                 <h2 className="font-montserrat text-h2 font-bold text-primaryText text-start mb-4">Sobre Nosotros</h2>
@@ -13,10 +15,10 @@ const AboutUs = () => {
                 </p>
                 <p className="font-montserrat text-body text-paragraphText mb-6">
                     Representamos marcas líderes en máquinas textiles y ofrecemos una amplia gama de repuestos
-                    esenciales, como platinas, jacks, frisadoras, agujas y mucho más. 
+                    esenciales, como platinas, jacks, frisadoras, agujas y mucho más.
                     <span className='block'>Con años de experiencia en el
-                    sector, nos destacamos por nuestra dedicación a acompañar a nuestros clientes en cada paso de su
-                    producción, asegurando calidad, durabilidad y rendimiento en cada producto.</span>
+                        sector, nos destacamos por nuestra dedicación a acompañar a nuestros clientes en cada paso de su
+                        producción, asegurando calidad, durabilidad y rendimiento en cada producto.</span>
                 </p>
                 <div className="space-y-4 pl-4">
                     <div className="flex items-center">

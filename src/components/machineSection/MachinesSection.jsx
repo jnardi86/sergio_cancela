@@ -26,7 +26,10 @@ const MachinesSection = () => {
     ];
 
     return (
-        <section className="bg-neutral py-8  px-4">
+        <section 
+        className="bg-neutral py-8 px-4"
+        id="machines"
+        >
             <p className=" font-montserrat text-body text-secondary font-thin mb-2 text-center">
                 Maquinaria
             </p>

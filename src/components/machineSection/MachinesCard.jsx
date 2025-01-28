@@ -32,19 +32,19 @@ const MachinesCard = ({ imageSrc, title, subtitle }) => {
         className="cursor-pointer w-[284px] bg-lightBg overflow-hidden rounded-tr-2xl rounded-bl-2xl shadow-customDrop"
       >
         {/* Contenedor de la imagen */}
-        <div className="w-full h-[180px] flex items-center justify-center bg-lightBg mb-4 border-solid border-b-2 border-b-neutral">
+        <div className="w-full h-auto flex items-center justify-center bg-lightBg mb-4 border-solid border-b-2 border-b-neutral">
           <img
             src={imageSrc}
             alt={title}
-            className="max-w-full max-h-full object-contain"
+            className="w-72 h-52 object-contain"
           />
         </div>
         {/* Contenido de la tarjeta */}
         <div className="p-4 text-center mb-4">
-          <h3 className="font-montserrat text-bodyLink font-semibold text-primaryText mb-4">
+          <h3 className="font-montserrat text-h3 font-semibold text-primaryText text-center mb-4">
             {title}
           </h3>
-          <p className="font-montserrat text-bodyLink text-secondaryText mt-2">
+          <p className="font-montserrat text-bodyLink text-secondaryText text-center mt-2">
             {subtitle}
           </p>
         </div>

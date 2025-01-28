@@ -1,9 +1,11 @@
+import { Link } from "react-scroll";
 import Arrow from "../icons/Arrow";
 import Layout from "../Layout";
 
 const HeroMobile = () => {
   return (
     <section
+      id="home"
       className="relative bg-cover bg-center"
       style={{ backgroundImage: "url('images/hero_bg_mobile.png')" }}
     >
@@ -26,17 +28,21 @@ const HeroMobile = () => {
 
           {/* Botón */}
           <div className="flex items-center justify-center">
-            <a
-              href="#maquinaria"
-              className="mt-4 px-6 py-3 bg-secondary text-lightBg font-montserrat text-bodyLink font-semibold rounded-lg shadow-md flex items-center gap-4"
+            <Link
+              to="machines"
+              smooth={true}
+              duration={1000}
+              className="mt-4 px-6 py-3 bg-secondary text-lightBg font-montserrat text-bodyInput font-semibold rounded-lg shadow-md flex items-center gap-4 uppercase"
             >
-              NUESTRA MAQUINARIA
+              Nuestra Maquinaria
               <Arrow
                 width="24"
                 height="24"
                 fill="#FAFAFA"
               />
-            </a>
+            </Link>
+
+
           </div>
         </div>
       </Layout>
