@@ -12,7 +12,7 @@ import PhoneIcon from "./icons/PhoneIcon";
 const Footer = () => {
     return (
         <footer className="bg-primary py-8 text-lightBg">
-            <div className="container mx-auto px-4 grid grid-cols-1 gap-6 md:grid-cols-4">
+            <div className="container mx-auto px-4 grid grid-cols-1 gap-6 md:grid-cols-3">
                 {/* Logo y slogan */}
                 <div className="mx-4">
                     <div className="flex flex-col items-center md:items-start">
@@ -29,7 +29,7 @@ const Footer = () => {
                         </p>
                     </div>
 
-                    <div className="flex justify-center space-x-4 mt-4">
+                    <div className="flex justify-center space-x-4 mt-4 md:justify-start">
                         <InstagramIcon
                             width="24"
                             height="24"
@@ -50,9 +50,9 @@ const Footer = () => {
                 </div>
 
                 {/* Links de navegación */}
-                <div className="px-4">
+                <div className="px-4 md:flex md:flex-col md:justify-center md:items-center">
                     <h4 className="font-montserrat text-h3 text-lightBg font-medium mb-4">Links</h4>
-                    <ul className="font-montserrat text-bodyLink font-medium space-y-2">
+                    <ul className="font-montserrat text-bodyLink font-medium space-y-2 md:flex md:flex-col md:items-center md:justify-center">
                         <li className="py-2"><a href="#inicio" className="hover:underline">Inicio</a></li>
                         <li className="py-2"><a href="#nosotros" className="hover:underline">Nosotros</a></li>
                         <li className="py-2"><a href="#maquinaria" className="hover:underline">Maquinaria</a></li>
@@ -62,7 +62,7 @@ const Footer = () => {
                 </div>
 
                 {/* Información de contacto */}
-                <div className="px-4">
+                <div className="px-4 md:flex md:flex-col md:items-start md:justify-start md:px-0">
                     <h4 className="font-montserrat text-h3 font-medium mb-4">Contáctanos</h4>
                     <ul className="space-y-4">
                         <li className="flex items-center justify-start gap-2">
@@ -72,7 +72,7 @@ const Footer = () => {
                                 fill="#FFFFFF"
                                 className="mr-2"
                             />
-                            <p className="font-montserrat font-normal text-bodyFooter text-lightBg">sergioancela@textil.com.ar</p>
+                            <p className="font-montserrat font-normal text-bodyFooter md:text-bodyLink text-lightBg">sergioancela@textil.com.ar</p>
                         </li>
                         <li className="flex items-center justify-start gap-2">
                             <PhoneIcon
@@ -81,7 +81,7 @@ const Footer = () => {
                                 fill="#FFFFFF"
                                 className="mr-2"
                             />
-                            <p className="font-montserrat font-normal text-bodyFooter text-lightBg">+54 11 1234-5678</p>
+                            <p className="font-montserrat font-normal text-bodyFooter md:text-bodyLink text-lightBg">+54 11 1234-5678</p>
                         </li>
                         <li className="flex items-center justify-start gap-2">
                             <LocationIcon
@@ -90,7 +90,7 @@ const Footer = () => {
                                 stroke="#FFFFFF"
                                 className="mr-2"
                             />
-                            <p className="font-montserrat font-normal text-bodyFooter text-lightBg">Calle (número), (CP) <span className="block">Buenos Aires, Argentina</span></p>
+                            <p className="font-montserrat font-normal text-bodyFooter md:text-bodyLink text-lightBg">Calle (número), (CP) <span className="block">Buenos Aires, Argentina</span></p>
                         </li>
                     </ul>
                 </div>

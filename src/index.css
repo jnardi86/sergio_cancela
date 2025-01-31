@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.clip-slanted {
+  clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+}
+
+

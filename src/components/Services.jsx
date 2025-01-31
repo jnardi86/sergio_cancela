@@ -24,14 +24,16 @@ const ServicesSection = () => {
         </p>
       </div>
       {/* Contenedor de la imagen */}
-      <div className="bg-neutral p-8">
-        <div className="overflow-hidden shadow-md">
+      <div className="md:w-full md:flex md:items-center md:justify-center">
+      <div className="bg-neutral p-8 md:w-1/2">
+        <div className="overflow-hidden">
           <img
             src="images/services_mobile.png"
             alt="Servicio de tejido"
-            className="w-full h-auto object-cover"
+            className="w-full h-auto md:w-[424px] md:h-[461px] object-cover"
           />
         </div>
+      </div>
       </div>
     </section>
   );

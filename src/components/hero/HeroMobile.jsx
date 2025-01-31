@@ -9,14 +9,12 @@ const HeroMobile = () => {
       className="relative bg-cover bg-center"
       style={{ backgroundImage: "url('images/hero_bg_mobile.png')" }}
     >
-      <Layout>
-        <div className="w-full mt-4 py-16 col-span-4 items-center text-center space-y-6">
+        <div className="w-full flex flex-col mt-4 py-16 items-center justify-center text-center space-y-6">
           {/* Título */}
           <h1 className="font-montserrat text-h1 text-lightBg font-bold py-8">
             Soluciones <span className="text-secondary">textiles</span> pensadas
             para tu negocio
           </h1>
-
           {/* Descripción */}
           <div className="w-full px-12 flex items-center justify-center">
             <p className="font-montserrat leading-6 text-body text-lightBg text-center">
@@ -24,8 +22,6 @@ const HeroMobile = () => {
               producción.
             </p>
           </div>
-
-
           {/* Botón */}
           <div className="flex items-center justify-center">
             <Link
@@ -41,12 +37,8 @@ const HeroMobile = () => {
                 fill="#FAFAFA"
               />
             </Link>
-
-
           </div>
         </div>
-      </Layout>
-
     </section>
   );
 };

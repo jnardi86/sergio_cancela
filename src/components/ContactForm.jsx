@@ -65,7 +65,7 @@ const ContactForm = () => {
       ></div>
 
       {/* Contenedor principal */}
-      <div className="relative bg-neutral rounded-xl shadow-md p-6 border border-neutral max-w-lg mx-auto lg:max-w-2xl">
+      <div className="relative bg-neutral rounded-xl shadow-md p-6 border border-neutral mx-auto md:w-96">
         {/* Información de contacto */}
         <h2 className="text-primaryText font-montserrat text-h2 text-center font-bold mb-6">
           Contactanos
@@ -77,7 +77,7 @@ const ContactForm = () => {
             </div>
             <div className="ml-3">
               <p className="text-secondaryText font-montserrat text-bodyLink font-semibold">Correo:</p>
-              <p className="text-primaryText font-montserrat text-bodyInput">sergioancela@textil.com.ar</p>
+              <p className="text-primaryText font-montserrat text-bodyInput">sergiocancela@textil.com.ar</p>
             </div>
           </li>
           <li className="flex items-center">

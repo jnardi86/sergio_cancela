@@ -44,7 +44,7 @@ const AboutUs = () => {
                 </div>
             </div>
             {/* Imagen */}
-            <div className="lg:w-1/2 w-full mt-8 lg:mt-0">
+            <div className="w-full mt-8 lg:w-1/2  lg:mt-0">
                 <img
                     src="images/aboutUs_mobile.png"
                     alt="Sobre nosotros"
