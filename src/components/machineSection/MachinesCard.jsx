@@ -1,24 +1,8 @@
-import React, { useState, useEffect } from "react";
-import MailIcon from "../icons/MailIcon";
-import PhoneIcon from "../icons/PhoneIcon";
-import CloseIcon from "../icons/CloseIcon";
+import React, { useState } from "react";
+import MachinesPopup from "./MachinesPopup";
 
 const MachinesCard = ({ imageSrc, title, subtitle }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  // Bloquear el scroll del body cuando el popup está abierto
-  useEffect(() => {
-    if (isPopupOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-
-    // Limpieza al desmontar el componente o cerrar el popup
-    return () => {
-      document.body.classList.remove("overflow-hidden");
-    };
-  }, [isPopupOpen]);
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
@@ -28,16 +12,28 @@ const MachinesCard = ({ imageSrc, title, subtitle }) => {
     <>
       {/* Tarjeta */}
       <div
-        onClick={togglePopup}
-        className="cursor-pointer w-[284px] bg-lightBg overflow-hidden rounded-tr-2xl rounded-bl-2xl shadow-customDrop"
+        onClick={() => window.innerWidth < 1024 && togglePopup()} // Abre popup en mobile
+        className="cursor-pointer w-[284px] bg-lightBg overflow-hidden rounded-tr-2xl rounded-bl-2xl shadow-customDrop group lg:hover:bg-neutral lg:transition-colors lg:duration-300 lg:hover:translate-y-2 lg:hover:translate-x-2 lg:transform lg:transition-transform lg:duration-500"
       >
         {/* Contenedor de la imagen */}
-        <div className="w-full h-auto flex items-center justify-center bg-lightBg mb-4 border-solid border-b-2 border-b-neutral">
+        <div className="relative w-full h-auto flex items-center justify-center bg-lightBg mb-4 border-solid border-b-2 border-b-neutral">
           <img
             src={imageSrc}
             alt={title}
             className="w-72 h-52 object-contain"
           />
+          {/* Capa transparente que aparece en hover */}
+          <div className="absolute inset-0 bg-neutral bg-opacity-50 opacity-0 lg:group-hover:opacity-100 lg:transition-opacity lg:duration-300"></div>
+          {/* Botón de "Consultar" SOLO PARA LG */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // Evita que el click en el botón active el evento de la card
+              togglePopup();
+            }}
+            className="absolute bottom-4 bg-secondary font-montserrat text-bodyButton text-lightBg font-semibold px-6 py-2 rounded-lg shadow-md opacity-0 lg:group-hover:opacity-100 lg:transition-opacity lg:duration-300 hover:bg-lightBg hover:text-secondary hover:border-solid hover:border-secondary hover:border-2"
+          >
+            CONSULTAR
+          </button>
         </div>
         {/* Contenido de la tarjeta */}
         <div className="p-4 text-center mb-4">
@@ -51,69 +47,8 @@ const MachinesCard = ({ imageSrc, title, subtitle }) => {
       </div>
 
       {/* Popup */}
-      {isPopupOpen && (
-        <div className="fixed inset-0 pt-6 pb-12 bg-primaryText bg-opacity-50 flex justify-center items-center z-50 min-h-screen">
-          <div className="bg-lightBg top-8 rounded-2xl shadow-lg p-6 max-w-[320px] px-2 w-full relative">
-            {/* Botón de cierre */}
-            <button
-              onClick={togglePopup}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-            >
-              <CloseIcon width="14" height="14" fill="#344051" />
-            </button>
-            {/* Contenido del Popup */}
-            <h2 className="font-montserrat text-h2 text-primaryText font-bold mb-2 text-center">
-              Contactanos
-            </h2>
-            <p className="font-montserrat text-body text-secondaryText mb-4 text-center">
-              Podés enviarnos tu consulta en cualquier momento.
-            </p>
-            <hr className="border-neutral mb-4" />
-            <ul className="space-y-6">
-              <li className="flex items-start gap-[10px]">
-                <div className="w-12 h-12 p-2 rounded-full bg-neutral flex items-center justify-center">
-                  <MailIcon width="24" height="24" fill="#0066CB" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-montserrat text-body text-secondaryText font-semibold">
-                    Correo:
-                  </span>
-                  <span className="font-montserrat text-bodyButton text-secondaryText">
-                    sergiocancela@textil.com.ar
-                  </span>
-                </div>
-              </li>
-              <li className="flex items-start gap-[10px]">
-                <div className="w-12 h-12 p-2 rounded-full bg-neutral flex items-center justify-center">
-                  <PhoneIcon width="24" height="24" fill="#0066CB" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-montserrat text-body text-secondaryText font-semibold">
-                    Teléfono:
-                  </span>
-                  <span className="font-montserrat bodyButton text-secondaryText">
-                    +54 11 1234-5678
-                  </span>
-                </div>
-              </li>
-              <li className="flex items-start gap-[10px]">
-                <div className="w-12 h-12 p-2 rounded-full bg-neutral flex items-center justify-center">
-                  <PhoneIcon width="24" height="24" fill="#0066CB" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-montserrat text-body text-secondaryText font-semibold">
-                    WhatsApp:
-                  </span>
-                  <span className="font-montserrat bodyButton text-secondaryText">
-                    +54 11 1234-5678
-                  </span>
-                </div>
-              </li>
-            </ul>
-            <hr className="border-neutral my-4" />
-          </div>
-        </div>
-      )}
+      {isPopupOpen &&  <MachinesPopup togglePopup={togglePopup} />}
+      {/* {isPopupOpen && <MachinesPopup togglePopup={togglePopup} />} */}
     </>
   );
 };

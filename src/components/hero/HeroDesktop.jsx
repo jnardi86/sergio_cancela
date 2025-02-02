@@ -25,7 +25,7 @@ const HeroDesktop = () => {
                 Máquinas y repuestos de calidad, que acompañan cada paso de tu producción.
               </p>
               {/* Botón */}
-              <div className="flex items-center justify-center mt-6 z-10">
+              <div className="flex items-center justify-center mt-6 z-10 cursor-pointer">
                 <Link
                   to="machines"
                   smooth={true}

@@ -40,7 +40,7 @@ const MachinesSection = () => {
                 Trabajamos junto a marcas líderes en la industria textil para ofrecer
                 máquinas y repuestos de la más alta calidad.
             </p>
-            <div className="flex flex-col justify-center items-center gap-4">
+            <div className="flex flex-col justify-center items-center lg:flex-row gap-4">
                 {machines.map((machine, index) => (
                     <MachinesCard
                         key={index}
