@@ -52,7 +52,7 @@ const Footer = () => {
           <ul className="space-y-4">
             <li className="flex items-center justify-center lg:justify-start gap-2">
               <MailIcon width="20" height="20" fill="#FFFFFF" />
-              <p className="font-montserrat text-bodyLink">sergiocancela@textil.com.ar</p>
+              <p className="font-montserrat text-bodyLink lg:text-bodyInput xl:text-bodyLink">sergiocancela@textil.com.ar</p>
             </li>
             <li className="flex items-center justify-center lg:justify-start gap-2">
               <PhoneIcon width="20" height="20" fill="#FFFFFF" />
@@ -71,7 +71,7 @@ const Footer = () => {
       {/* Copyright */}
       <div className="mt-6 text-center lg:text-left lg:max-w-[1215px] lg:mx-auto">
         <hr className="border-neutral mb-4" />
-        <p className="font-montserrat text-bodyLink">
+        <p className="font-montserrat text-bodyLink lg:pl-2 xl:pl-0">
           &copy; 2024 Sergio A. Cancela - Todos los derechos reservados
         </p>
       </div>
