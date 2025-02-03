@@ -66,7 +66,7 @@ const ContactForm = () => {
       ></div>
 
       {/* Contenedor Principal */}
-      <div className="relative bg-neutral rounded-2xl shadow-lg p-6 border border-neutral max-w-[900px] mx-auto w-full lg:flex lg:p-12">
+      <div className="relative bg-neutral rounded-2xl shadow-lg p-6 border border-neutral w-full max-w-[900px] mx-auto md:w-96 lg:w-3/4 lg:flex lg:p-12">
         
         {/* Columna izquierda - Datos de contacto */}
         <div className="lg:w-1/2 space-y-6">

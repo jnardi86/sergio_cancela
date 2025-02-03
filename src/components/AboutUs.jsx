@@ -12,10 +12,10 @@ const AboutUs = () => {
         <h2 className="font-montserrat text-h2 font-bold text-primaryText text-start mb-4">
           SOBRE NOSOTROS
         </h2>
-        <p className="font-montserrat text-h4 font-bold text-secondaryText mb-4">
+        <p className="font-montserrat text-h4 font-bold text-secondaryText mb-4 lg:pr-6 xl:pr-0">
           Somos una empresa argentina especializada en proveer soluciones integrales para la industria textil.
         </p>
-        <p className="font-montserrat text-body text-paragraphText mb-6">
+        <p className="font-montserrat text-body text-paragraphText mb-6 lg:pr-8 xl:pr-0">
           Representamos marcas líderes en máquinas textiles y ofrecemos una amplia gama de repuestos
           esenciales, como platinas, jacks, frisadoras, agujas y mucho más.
           <span className="block">
