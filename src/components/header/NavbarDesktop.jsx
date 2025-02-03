@@ -26,7 +26,7 @@ const NavbarDesktop = () => {
             </Link>
           </li>
           <li>
-            <Link to="maquinaria" smooth={true} duration={500} className="cursor-pointer hover:text-secondary">
+            <Link to="machines" smooth={true} duration={500} className="cursor-pointer hover:text-secondary">
               Maquinaria
             </Link>
           </li>
