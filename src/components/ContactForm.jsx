@@ -9,10 +9,11 @@ const ContactForm = () => {
     name: "",
     email: "",
     message: "",
-    website: "", // honeypot
+    website: "",
   });
 
   const [isFormValid, setIsFormValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -28,6 +29,7 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const response = await fetch("https://actextiles.com.ar/api/send-email.php", {
@@ -67,6 +69,8 @@ const ContactForm = () => {
         text: "Ocurrió un problema al enviar el mensaje. Intenta más tarde.",
         icon: "error",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -75,21 +79,17 @@ const ContactForm = () => {
       id="contactForm"
       className="relative bg-cover bg-center py-12 px-4 flex items-center justify-center"
     >
-      {/* Imagen de fondo para mobile */}
       <div
         className="absolute inset-0 bg-cover bg-center lg:hidden"
         style={{ backgroundImage: `url('images/form_bg_mobile.png')` }}
       ></div>
 
-      {/* Imagen de fondo para desktop */}
       <div
         className="absolute inset-0 hidden lg:block bg-cover bg-center"
         style={{ backgroundImage: `url('images/form_bg_desktop.png')` }}
       ></div>
 
-      {/* Contenedor Principal */}
       <div className="relative bg-neutral rounded-2xl shadow-lg p-6 border border-neutral w-full max-w-[900px] mx-auto md:w-96 lg:w-3/4 lg:flex lg:p-12">
-        {/* Columna izquierda - Datos de contacto */}
         <div className="lg:w-1/2 space-y-6">
           <h2 className="text-primaryText font-montserrat text-h2 font-bold mb-6">
             Contactanos
@@ -137,7 +137,6 @@ const ContactForm = () => {
           </ul>
         </div>
 
-        {/* Columna derecha - Formulario */}
         <div className="lg:w-1/2 mt-8 lg:mt-0">
           <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
             <div>
@@ -183,7 +182,6 @@ const ContactForm = () => {
               ></textarea>
             </div>
 
-            {/* Honeypot oculto */}
             <input
               type="text"
               id="website"
@@ -197,13 +195,39 @@ const ContactForm = () => {
 
             <button
               type="submit"
-              disabled={!isFormValid}
-              className={`w-full font-semibold py-2 rounded-lg shadow-md ${isFormValid
-                ? "bg-paragraphText text-lightBg hover:bg-blue-700"
-                : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                }`}
+              disabled={!isFormValid || isLoading}
+              className={`w-full font-semibold py-2 rounded-lg shadow-md flex items-center justify-center gap-2 ${
+                isFormValid && !isLoading
+                  ? "bg-paragraphText text-lightBg hover:bg-blue-700"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+              }`}
             >
-              ENVIAR CONSULTA
+              {isLoading ? (
+                <>
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                  </svg>
+                  Enviando...
+                </>
+              ) : (
+                "ENVIAR CONSULTA"
+              )}
             </button>
           </form>
         </div>
