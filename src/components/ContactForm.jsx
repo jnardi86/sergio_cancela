@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PhoneIcon from "./icons/PhoneIcon";
 import MailIcon from "./icons/MailIcon";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 
 const ContactForm = () => {
-  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
+    website: "", // honeypot
   });
 
   const [isFormValid, setIsFormValid] = useState(false);
@@ -26,26 +26,48 @@ const ContactForm = () => {
     setIsFormValid(isValid);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    Swal.fire({
-      title: "¡Consulta enviada!",
-      text: "Hemos recibido tu consulta. Nos pondremos en contacto contigo en breve.",
-      icon: "success",
-      iconColor: "#0066cb",
-      confirmButtonText: "Aceptar",
-      customClass: {
-        popup: "bg-lightBg rounded-2xl shadow-lg",
-        title: "text-h3 text-primaryText font-montserrat font-bold",
-        content: "text-secondaryText font-montserrat text-body",
-        confirmButton:
-          "bg-paragraphText text-lightBg font-montserrat text-link font-semibold rounded-lg py-2 px-4 hover:bg-blue-700",
-      },
-    });
+    try {
+      const response = await fetch("https://actextiles.com.ar/api/send-email.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams(formData).toString(),
+      });
 
-    setFormData({ name: "", email: "", message: "" });
-    setIsFormValid(false);
+      const data = await response.json();
+
+      if (data.success) {
+        Swal.fire({
+          title: "¡Consulta enviada!",
+          text: "Hemos recibido tu consulta. Nos pondremos en contacto contigo en breve.",
+          icon: "success",
+          iconColor: "#0066cb",
+          confirmButtonText: "Aceptar",
+          customClass: {
+            popup: "bg-lightBg rounded-2xl shadow-lg",
+            title: "text-h3 text-primaryText font-montserrat font-bold",
+            content: "text-secondaryText font-montserrat text-body",
+            confirmButton:
+              "bg-paragraphText text-lightBg font-montserrat text-link font-semibold rounded-lg py-2 px-4 hover:bg-blue-700",
+          },
+        });
+
+        setFormData({ name: "", email: "", message: "", website: "" });
+        setIsFormValid(false);
+      } else {
+        throw new Error(data.message);
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: "Ocurrió un problema al enviar el mensaje. Intenta más tarde.",
+        icon: "error",
+      });
+    }
   };
 
   return (
@@ -67,7 +89,6 @@ const ContactForm = () => {
 
       {/* Contenedor Principal */}
       <div className="relative bg-neutral rounded-2xl shadow-lg p-6 border border-neutral w-full max-w-[900px] mx-auto md:w-96 lg:w-3/4 lg:flex lg:p-12">
-        
         {/* Columna izquierda - Datos de contacto */}
         <div className="lg:w-1/2 space-y-6">
           <h2 className="text-primaryText font-montserrat text-h2 font-bold mb-6">
@@ -161,14 +182,26 @@ const ContactForm = () => {
                 required
               ></textarea>
             </div>
+
+            {/* Honeypot oculto */}
+            <input
+              type="text"
+              id="website"
+              name="website"
+              className="hidden"
+              autoComplete="off"
+              tabIndex="-1"
+              onChange={handleInputChange}
+              value={formData.website}
+            />
+
             <button
               type="submit"
               disabled={!isFormValid}
-              className={`w-full font-semibold py-2 rounded-lg shadow-md ${
-                isFormValid
-                  ? "bg-paragraphText text-lightBg hover:bg-blue-700"
-                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
-              }`}
+              className={`w-full font-semibold py-2 rounded-lg shadow-md ${isFormValid
+                ? "bg-paragraphText text-lightBg hover:bg-blue-700"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                }`}
             >
               ENVIAR CONSULTA
             </button>
